@@ -477,3 +477,5 @@ $RECYCLE.BIN/
 *.lnk
 API/appsettings.json
 API/artisticoder-art-manager.db
+client/ssl/localhost-key.pem
+client/ssl/localhost.pem
