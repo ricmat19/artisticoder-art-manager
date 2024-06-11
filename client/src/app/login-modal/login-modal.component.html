@@ -1,0 +1,9 @@
+<div class="modal" *ngIf="showLoginModal">
+    <div class="modal-positioner">
+        <form #loginForm="ngForm" (ngSubmit)="login()" class="">
+            <input name="username" [(ngModel)]="model.username" class="" type="text" placeholder="Username" />
+            <input name="password" [(ngModel)]="model.password" class="" type="password" placeholder="Password" />
+            <button class="" type="submit">Login</button>
+        </form>
+    </div>
+</div>

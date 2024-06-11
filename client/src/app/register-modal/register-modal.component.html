@@ -1,0 +1,9 @@
+<div class="modal" *ngIf="showRegisterModal">
+    <div class="modal-positioner">
+        <form #loginForm="ngForm" (ngSubmit)="register()" class="">
+            <input name="username" [(ngModel)]="model.username" class="" type="text" placeholder="Username" />
+            <input name="password" [(ngModel)]="model.password" class="" type="password" placeholder="Password" />
+            <button class="" type="submit">Register</button>
+        </form>
+    </div>
+</div>

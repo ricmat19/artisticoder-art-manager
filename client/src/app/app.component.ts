@@ -1,29 +1,34 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+import { AccountService } from './services/account.service';
+import { IUser } from './models/user';
+import { HomeComponent } from './home/home.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, HeaderComponent, FooterComponent, HomeComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
 })
 export class AppComponent implements OnInit {
+  title = 'Art Manager';
 
-  title = "Art Manager";
-  users: any;
-
-  constructor(private http: HttpClient) {
-
-  }
+  constructor(private accountService: AccountService) {}
 
   ngOnInit(): void {
-    this.http.get("https://localhost:5001/api/users").subscribe({
-      next: response => this.users = response,
-      error: error => console.log(error),
-      complete: () => console.log("Request complete!")
-    });
+    this.setCurrentUser();
   }
 
+  setCurrentUser() {
+    const userString = localStorage.getItem('user');
+    if (!userString) {
+      return;
+    } else {
+      const user: IUser = JSON.parse(userString);
+      this.accountService.setCurrentUser(user);
+    }
+  }
 }

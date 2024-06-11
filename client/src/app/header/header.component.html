@@ -1,0 +1,22 @@
+<div>
+    <app-login-modal></app-login-modal>
+    <app-register-modal></app-register-modal>
+    <nav>
+        <a routerLink="/" routerLinkActive="active"><span>Logo</span></a>
+        <ng-container *ngIf="(accountService.currentUser$ | async)">
+            <a routerLink="/projects" routerLinkActive="active"><span>Projects</span></a>
+            <a routerLink="/projects/create" routerLinkActive="active"><span>Create</span></a>
+        </ng-container>
+        <form #searchForm="ngForm" (ngSubmit)="search()" class="">
+            <input name="search" [(ngModel)]="model.search" class="" type="text" placeholder="Search" />
+            <button class="" type="submit">Search</button>
+        </form>
+        <span class="notificatons"></span>
+        <span class="help"></span>
+        <span class="settings"></span>
+        <span class="quick-action-menu"></span>
+        <span *ngIf="(accountService.currentUser$ | async) as user" class="account"></span>
+        <span *ngIf="!(accountService.currentUser$ | async)" class="register"><button (click)="registerModalToggle()">Register</button></span>
+        <span *ngIf="!(accountService.currentUser$ | async)" class="sign-in"><button (click)="signInModalToggle()">Sign In</button></span>
+    </nav>
+</div>
