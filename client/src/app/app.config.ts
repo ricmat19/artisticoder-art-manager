@@ -3,7 +3,10 @@ import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
-import { provideHttpClient } from '@angular/common/http';
+//Section 7/28
+import { HTTP_INTERCEPTORS, provideHttpClient } from '@angular/common/http';
+//Section 7/28
+// import { errorInterceptor } from './interceptors/error.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -11,5 +14,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideClientHydration(),
     provideHttpClient(),
+    //Section 7/28
+    // { provide: HTTP_INTERCEPTORS, useClass: errorInterceptor, multi: true },
   ],
 };

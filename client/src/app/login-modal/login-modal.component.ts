@@ -29,7 +29,7 @@ export class LoginModalComponent implements OnInit {
       next: (response) => {
         this.router.navigateByUrl("/projects")
       },
-      error: (error) => console.log(error),
+      error: (error) => console.log(error)
     });
   }
 

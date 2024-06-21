@@ -4,6 +4,7 @@ import { ProjectListComponent } from './projects/project-list/project-list.compo
 import { ProjectDetailsComponent } from './projects/project-details/project-details.component';
 import { ProjectCreateComponent } from './projects/project-create/project-create.component';
 import { authGuard } from './guards/auth.guard';
+import { NotFoundComponent } from './errors/not-found/not-found.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -26,5 +27,5 @@ export const routes: Routes = [
       },
     ],
   },
-  { path: '**', component: HomeComponent, pathMatch: 'full' },
+  { path: '**', component: NotFoundComponent, pathMatch: 'full' },
 ];
